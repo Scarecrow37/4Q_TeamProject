@@ -203,11 +203,21 @@ void Player::PostUpdate(float deltaTime)
 		* Engine::Math::Matrix::CreateFromQuaternion(q)
 		* Engine::Math::Matrix::CreateTranslation(_transform.position.x, _transform.position.y - 14.f, _transform.position.z);
 
-	_leftSrc = (*_leftHand * _worldMatrix).Translation();
-	_leftDst = _leftSrc + _worldMatrix.Forward() * 100.f;
+	if (_bitFlag->IsOnFlag(StateFlag::Interact_Triggered))
+	{
+		_leftSrc = (*_leftHand * _worldMatrix).Translation();
+		_leftDst = _leftSrc + _worldMatrix.Forward() * 100.f;
 
-	_rightSrc = (*_rightHand * _worldMatrix).Translation();
-	_rightDst = _rightSrc + _worldMatrix.Forward() * 100.f;
+		_rightSrc = (*_rightHand * _worldMatrix).Translation();
+		_rightDst = _rightSrc + _worldMatrix.Forward() * 100.f;
+	}
+	else
+	{
+		_leftSrc = { 0.f, 10000.f, 0.f };
+		_leftDst = { 0.f, 10000.f, 0.f };
+		_rightSrc = { 0.f, 10000.f, 0.f };
+		_rightDst = { 0.f, 10000.f, 0.f };
+	}
 
 	_camera->SetPerspective(1.f, 5000.f, std::numbers::pi_v<float> / 4.f);
 

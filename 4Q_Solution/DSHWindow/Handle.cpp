@@ -33,8 +33,8 @@ void DSH::Window::Handle::Show() const
 }
 
 void DSH::Window::Handle::Show(const int showCommand) const
-{
-	ShowWindow(_windowHandle, showCommand);
+{	
+	ShowWindow(_windowHandle, SW_MAXIMIZE);
 }
 
 void DSH::Window::Handle::Update() const

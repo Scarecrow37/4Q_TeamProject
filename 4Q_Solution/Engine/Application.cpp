@@ -227,7 +227,7 @@ void Engine::Application::LoadGameData()
 
 	const auto configData = _loadManager->GetGameConfigData();
 	_title = configData.GetProperty<std::wstring>(L"Title").value_or(L"Game");
-	_size = configData.GetProperty<Math::Size>(L"Size").value_or(Math::Size{ 1600, 900 });
+	_size = configData.GetProperty<Math::Size>(L"Size").value_or(Math::Size{ 1920, 1080 });
 }
 
 void Engine::Application::FinalizeManagers()

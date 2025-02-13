@@ -70,7 +70,7 @@ extern void PlaceInCenterOfScreen(const HWND windowHandle)
 	const int screenHeight = GetSystemMetrics(SM_CYSCREEN);
 	RECT rect;
 	GetClientRect(windowHandle, &rect);
-	::AdjustWindowRect(&rect, WS_OVERLAPPEDWINDOW, FALSE);
+	::AdjustWindowRect(&rect, WS_POPUP, FALSE);
 	const int clientWidth = rect.right - rect.left;
 	const int clientHeight = rect.bottom - rect.top;
 	SetWindowPos(windowHandle, nullptr, screenWidth / 2 - clientWidth / 2, screenHeight / 2 - clientHeight / 2,
